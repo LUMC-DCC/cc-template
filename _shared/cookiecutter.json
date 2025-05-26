@@ -1,4 +1,5 @@
 {
+  "language": ["python", "r"],
   "project_name": "My Awesome Project",
   "project_slug": "awesome_project",
   "include_docs": ["yes", "no"]
