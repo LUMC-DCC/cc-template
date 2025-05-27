@@ -9,6 +9,21 @@ OPTIONAL_PATHS = [
         "condition": "{{ cookiecutter.include_docs }}",
         "expected": "yes"
     },
+    {
+        "path": "tests",
+        "condition": "{{ cookiecutter.include_tests }}",
+        "expected": "yes"
+    },
+    {
+        "path": "github",
+        "condition": "{{ cookiecutter.using_ci }}",
+        "expected": "yes"
+    },
+    {
+        "path": "LICENSE.txt",
+        "condition": "{{ cookiecutter.include_license }}",
+        "expected": "yes"
+    },
 ]
 
 
