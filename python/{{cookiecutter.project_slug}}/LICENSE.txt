@@ -1,7 +1,7 @@
 TEST_LICENSE
 
 {% if cookiecutter.license == "MIT" %}
-{% include "../../_assets/licenses/mit.txt" %}
+{% include "licenses/mit.txt" %}
 {% elif cookiecutter.license == "Apache-2.0" %}
-{% include "../../_assets/licenses/apache-2.0.txt" %}
+{% include "licenses/apache-2.0.txt" %}
 {% endif %}
