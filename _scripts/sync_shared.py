@@ -15,7 +15,7 @@ RELATIVE_SYNC_MAP = {
     "hooks": "hooks",
     "cookiecutter.json": "cookiecutter.json",
     "LICENSE.txt": "{{cookiecutter.project_slug}}/LICENSE.txt",
-    "licenses": "licenses",
+    "licenses": "{{cookiecutter.project_slug}}/licenses",
 }
 
 def sync_path(src: Path, dst: Path):
