@@ -25,23 +25,39 @@ OPTIONAL_PATHS = [
     },
 ]
 
+ALWAYS_REMOVE_PATHS = [
+    "licenses",
+]
 
-def cleanup_optional_paths():
+def remove_path(path):
+    if os.path.exists(path):
+        if os.path.isdir(path):
+            shutil.rmtree(path)
+        else:
+            os.remove(path)
+        print(f"[INFO] Removed {path}")
+    else:
+        print(f"[SKIP] {path} does not exist")
+
+def cleanup():
     cwd = os.getcwd()
 
+    # Clean optional
     for entry in OPTIONAL_PATHS:
         condition_val = entry["condition"].strip()
         expected_val = entry["expected"]
         target = os.path.join(cwd, entry["path"])
 
         if condition_val != expected_val:
-            if os.path.exists(target):
-                print(f"[INFO] Removing {entry['path']} (condition: {condition_val} != {expected_val})")
-                if os.path.isdir(target):
-                    shutil.rmtree(target)
-                else:
-                    os.remove(target)
+            print(f"[INFO] Removing {entry['path']} (condition: {condition_val} != {expected_val})")
+            remove_path(target)
+
+    # Clean always-remove
+    for rel_path in ALWAYS_REMOVE_PATHS:
+        target = os.path.join(cwd, rel_path)
+        print(f"[INFO] Removing always-remove path: {rel_path}")
+        remove_path(target)
 
 
 if __name__ == '__main__':
-    cleanup_optional_paths()
+    cleanup()
