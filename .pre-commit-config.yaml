@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: sync-shared
         name: Sync shared cookiecutter assets
-        entry: bash -c 'poetry run python _scripts/sync_shared.py && git add .'
+        entry: bash -c 'poetry run python _scripts/sync_shared.py | grep "^\[modified\]" | cut -d] -f2- | xargs git add'
         language: system
         types: [file]
         always_run: true

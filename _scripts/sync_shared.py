@@ -18,16 +18,23 @@ RELATIVE_SYNC_MAP = {
     "licenses": "{{cookiecutter.project_slug}}/licenses",
 }
 
+# Collect modified paths
+MODIFIED_PATHS = []
+
 def sync_path(src: Path, dst: Path):
-    print(f"[sync] Syncing {src} → {dst}")
     if src.is_file():
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
+        MODIFIED_PATHS.append(dst)
     elif src.is_dir():
-        # Python 3.8+ only
-        shutil.copytree(src, dst, dirs_exist_ok=True)
+        if dst.exists():
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+        MODIFIED_PATHS.append(dst)
     else:
         print(f"[warning] Unknown source type: {src}")
+        return
+    print(f"[sync] Synced {src} → {dst}")
 
 def main():
     seen = set()
@@ -42,6 +49,9 @@ def main():
             seen.add(key)
 
             sync_path(src, dst)
+
+    for path in MODIFIED_PATHS:
+        print(f"[modified]{path}")
 
 if __name__ == "__main__":
     main()
