@@ -6,7 +6,6 @@
   "include_docs": "yes",
   "include_tests": "yes",
   "using_ci": "yes",
-  "include_license": "yes",
   
   "license": "Apache-2.0"
 }

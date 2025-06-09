@@ -6,7 +6,6 @@
   "include_docs": ["yes", "no"],
   "include_tests": ["yes", "no"],
   "using_ci": ["yes", "no"],
-  "include_license": ["yes", "no"],
 
-  "license": ["MIT", "Apache-2.0"]
+  "license": ["none","MIT", "Apache-2.0"]
 }
