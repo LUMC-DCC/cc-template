@@ -24,16 +24,7 @@ This will generate the template in a new folder named my-cool-project, substitut
 This template is designed to work seamlessly with the [Cookiecutter SMP API](https://github.com/LUMC-DCC/cookiecutter-smp-api), 
 which accepts a JSON file containing the context and the language field to determine which subdirectory to use.
 
-Example JSON context:
-
-```json
-{
-  "language": "python",
-  "project_name": "My Awesome Project",
-  "project_slug": "awesome_project",
-  "include_docs": "yes"
-}
-```
+Example JSON context can be found in [example_input.json](example_input.json).
 
 ---
 
